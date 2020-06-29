@@ -257,8 +257,8 @@ class DescriptiveAnalysis():
         return self.skewed_columns
     
     def remove_skewness(self):
-		if self.target in self.skewed_columns:
-			self.skewed_columns.remove(self.target)
+	if self.target in self.skewed_columns:
+        self.skewed_columns.remove(self.target)
         
         for i in self.skewed_columns:
 			
