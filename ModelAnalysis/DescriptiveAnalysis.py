@@ -312,8 +312,8 @@ class DescriptiveAnalysis():
   
         
     def categorical_encoding(self):
-	
-	    self.labels = le.fit_transform(self.labels)
+        
+        self.labels = le.fit_transform(self.labels)
         
         categorical_cols = [i for i in self.features.columns if self.features[i].dtypes == 'object']
         
