@@ -230,11 +230,11 @@ class DescriptiveAnalysis():
         try:
             df = pd.DataFrame(columns=cols)
             
-            numeric_columns = [i for i in self.data.columns if self.data[i].dtypes != 'object']
+            categorical_columns = [i for i in self.data.columns if self.data[i].dtypes == 'object']
             
             i = 0
             
-            for j in numeric_columns:
+            for j in categorical_columns:
                 df.loc[i] = [j,self.data[j].shape[0],len(self.data[j].unique()),self.data[j].mode()[0]]
                 
                 i = i + 1
@@ -308,6 +308,7 @@ class DescriptiveAnalysis():
             pass
         
         return self.features,self.labels
+    
              
   
         
