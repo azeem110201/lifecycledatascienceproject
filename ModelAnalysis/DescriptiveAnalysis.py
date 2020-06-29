@@ -257,6 +257,9 @@ class DescriptiveAnalysis():
         return self.skewed_columns
     
     def remove_skewness(self):
+	
+	if self.target in self.skewed_columns:
+            self.skewed_columns.remove(self.target)
         
         for i in self.skewed_columns:
             
@@ -308,6 +311,8 @@ class DescriptiveAnalysis():
   
         
     def categorical_encoding(self):
+	
+	self.labels = le.fit_transform(self.labels)
         
         categorical_cols = [i for i in self.features.columns if self.features[i].dtypes == 'object']
         
