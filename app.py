@@ -412,7 +412,7 @@ def main(df):
     
 if __name__ == '__main__':
     
-    st.title('Data Cleaning, Exploratory Data Analysis, and Feature Selection Tool')
+    st.title('AutoML:Train your models by just providing your dataset and target feature')
     
     st.info(''' Welcome to our API where you can clean your data,explore the insights of your data using both descriptive and exploratory data analysis and mark out the features which are less important to the model for training ''')
     
