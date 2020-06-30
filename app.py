@@ -34,7 +34,7 @@ def main(df):
     
     
     
-    target_name = st.selectbox(label='Select',options=df.columns)    
+    target_name = st.selectbox(label='Select your target variable:',options=df.columns)    
     
     DA = DescriptiveAnalysis(df,target_name)
     
