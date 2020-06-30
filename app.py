@@ -90,7 +90,7 @@ def main(df):
             
         if st.sidebar.checkbox('Ternary Columns in data'):
             st.subheader('Ternary columns:')
-            st.write('Binary columns are those features which have three unique elements in their features.Ex:Low, Medium and high')
+            st.write('Ternary columns are those features which have three unique elements in their features.Ex:Low, Medium and high')
             st.write(DA.Ternary_columns())    
             
 
@@ -119,7 +119,7 @@ def main(df):
     st.sidebar.subheader('Menu')
     
     if st.sidebar.checkbox('Click here for Data Preprocessing options'):
-        st.title('Check How your data is distributed and how it should be distributed')
+        st.title('Check How your data is distributed')
         
         if st.sidebar.checkbox('Skewness of numerical columns'):
             st.subheader('Skewness')
@@ -137,7 +137,7 @@ def main(df):
             st.write(df.head(10))
             st.write('DataFrame after removing skewness')
             st.write(DA.remove_skewness())
-            st.info('Note the numerical values of two DataFrames')
+            st.info('Note the numerical values of the above two DataFrames')
             
     ##graphs
     
@@ -150,17 +150,17 @@ def main(df):
     
     if st.sidebar.checkbox('Click here for Feature Engineering options'):
         st.title('Feature Enginnering')
-        st.write('Feature engineering is one of the most important step in process of solving machine learning models. Here you omit the features that are least important w.r.t target variable and this helps in reducing the dimensions of the dataframe')
+        st.write('Feature engineering is one of the most important step in the process of solving machine learning promblems. Here you omit the features that are least important w.r.t target variable and this helps in reducing the dimensions of the dataframe and select the only the important features for the model')
         
         if st.sidebar.checkbox('Chi-Square Test'):
             st.subheader('Chi-Square Test for features w.r.t target variable')
-            st.write('Dataframe before Chi-Square test:')
+            st.write('columns before Chi-Square test:')
             st.write(df.columns)
             choice = st.selectbox(label='Do you want to drop the columns which does not satisfy chi-Square test?',options=['TRUE','FALSE'])
-            st.write('Dataframe after Chi-Square test:')
+            st.write('columns after Chi-Square test:')
             chi_list_column,droped_columns_chi_list = DA.chi_square_test(choice)
             st.write(chi_list_column)
-            st.write('Columns thar are dropped')
+            st.write('Columns that are dropped in chi-square test')
             st.write(droped_columns_chi_list)
             
             
@@ -180,10 +180,11 @@ def main(df):
             st.write('labels:')
             st.write(labels[:10])
         
-        st.warning('Check If the labels are balanced or not. Ignoring the datasets which are Imbalance can lead to serious promblems')
+        
         
         if st.sidebar.checkbox('Check for imbalance labels in the dataset'):
             st.subheader('Check the for imbalanced label in dataet')
+            st.warning('Check If the labels are balanced or not. Ignoring the datasets which are Imbalance can lead to serious promblems')
             #choice = st.selectbox(label='Please see below the count of each value in the output labels. If there count is almost the same than leave if and if not then please click on yes if you want to balance the data.',options=['YES','NO'])
             st.write(df[target_name].value_counts())
             st.write(DA.apply_smote())
@@ -210,12 +211,12 @@ def main(df):
             
         if st.sidebar.checkbox('Standardize data'):
             st.subheader('standardization of data')
-            st.write('Always standardize the data so that all the values are as closer to each other as possible (Here the data will ne Normally distributed i.e mean = 0 and standar devaition = 1)')
+            st.write('Always standardize the data so that all the values are as closer to each other as possible (Here the data will be Normally distributed i.e mean = 0 and standar devaition = 1)')
             features,labels = DA.standardized_data()
             
             st.write('The data has been standarised')
             
-            st.write('The next step is training of the model. If you are providing very large datasets it may take time to')
+            st.write('The next step is training of the model. If you are providing very large datasets it may take time to evaluate and give you the results')
     
 
     #graphs        
@@ -230,7 +231,7 @@ def main(df):
             
             st.subheader('Count Plot')
             choice = st.selectbox(label='Select the column for CountPlot:',options=df.columns)
-            choice_hue = st.selectbox(label='select hue: (Optional)',options=[None,True])
+            choice_hue = st.selectbox(label='select hue: (Optional)',options=df.columns)
             
             fig = EA.countplot(choice, choice_hue)
             st.pyplot()
@@ -283,7 +284,7 @@ def main(df):
             st.subheader('Line plot')
             choice_1 = st.selectbox(label='Select the first column for Line plot:',options=df.columns)
             choice_2 = st.selectbox(label='Select the second column for Line plot:',options=df.columns)
-            choice_hue = st.selectbox(label='Select hue: (Optional)',options=[None,True])
+            choice_hue = st.selectbox(label='Select hue: (Optional)',options=df.columns)
     
             fig = EA.pointplot(choice_1,choice_2,choice_hue)
             st.pyplot()
@@ -294,7 +295,7 @@ def main(df):
             st.subheader('Box plot')
             choice_1 = st.selectbox(label='Select the first column for Box plot:',options=df.columns)
             choice_2 = st.selectbox(label='Select the second column for Box plot:',options=df.columns)
-            choice_hue = st.selectbox(label='Select a hue : (Optional)',options=[None,True])
+            choice_hue = st.selectbox(label='Select a hue : (Optional)',options=df.columns)
     
             fig = EA.boxplot(choice_1,choice_2,choice_hue)
             st.pyplot()
@@ -334,8 +335,8 @@ def main(df):
         
         st.title('Training and Predication of your model')
         st.info('Here your model will get trained with different Machine Learning algorithms')
-        st.warning('Below if you want to train with "ALL" the algorithms and if your dataset is too large than it may take some time to get your results')
-        choice = st.selectbox('Which Algorithm you want to choose (All means it will return the result for all the different algorithms used)',options=['All','DecisionTree','RandomForest','Naive Bayes','KNeighbours','SVM','Neural Network(MLP Classifier)','LogisticRegression','ExtraTreesClassifier','AdaBoostClassifier','GradientBoostingClassifer','XGBoost','CatBoost'])
+        st.warning('Below if you want to train with "ALL" the different machine learning algorithms and if your dataset is large than it may take time to get your results')
+        choice = st.selectbox('Which Algorithm you want to choose (All means it will return the result for all the different machine learning algorithms used)',options=['All','DecisionTree','RandomForest','Naive Bayes','KNeighbours','SVM','Neural Network(MLP Classifier)','LogisticRegression','ExtraTreesClassifier','AdaBoostClassifier','GradientBoostingClassifer','XGBoost','CatBoost'])
          
         DA.create_classifiers(choice)
         models = DA.train_model()
