@@ -189,10 +189,10 @@ def main(df):
             st.write(df[target_name].value_counts())
             st.write(DA.apply_smote())
             ##changes were made from here
-            some_list = st.write(DA.check_imbalance_after_smote())
-            df = df.dropna(inplace=True)
-            fig = EA.countplot(df,some_list)
-            st.pyplot()
+            #some_list = st.write(DA.check_imbalance_after_smote())
+            #df = df.dropna(inplace=True)
+            #fig = EA.countplot(df,some_list)
+            #st.pyplot()
             
             
         if st.sidebar.checkbox('Train Test Split'):
