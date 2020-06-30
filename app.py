@@ -449,8 +449,6 @@ if __name__ == '__main__':
     
     if df is not None:
         main(df)
-    else:
-        st.write('May be the file is not a csv file or may be its separator is not ","')
     
     #main(df)
     
