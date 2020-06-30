@@ -346,10 +346,11 @@ class DescriptiveAnalysis():
             self.features,self.labels = smote.fit_sample(self.features,self.labels)
             
     def check_imbalance_after_smote(self):
+        
         for arr in self.labels:
             zero_els = np.count_nonzero(arr==0)
         
-        one_els = len(self.labels) - len(zero_els)
+        one_els = len(self.labels) - zero_els
         some_list = [zero_els,one_els]
         return some_list    
         
