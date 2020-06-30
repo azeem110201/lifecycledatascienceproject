@@ -34,6 +34,7 @@ def main(df):
     
     
     
+    
     target_name = st.selectbox(label='Select your target variable:',options=df.columns)    
     
     DA = DescriptiveAnalysis(df,target_name)
@@ -448,6 +449,8 @@ if __name__ == '__main__':
     
     if df is not None:
         main(df)
+    else:
+        st.write('May be the file is not a csv file or may be its separator is not ","')
     
     #main(df)
     
