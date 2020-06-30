@@ -188,6 +188,10 @@ def main(df):
             #choice = st.selectbox(label='Please see below the count of each value in the output labels. If there count is almost the same than leave if and if not then please click on yes if you want to balance the data.',options=['YES','NO'])
             st.write(df[target_name].value_counts())
             st.write(DA.apply_smote())
+            ##changes were made from here
+            some_list = st.write(DA.check_imbalance_after_smote())
+            fig = EA.countplot(some_list)
+            st.pyplot()
             
             
         if st.sidebar.checkbox('Train Test Split'):
