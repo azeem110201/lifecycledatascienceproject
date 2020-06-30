@@ -298,8 +298,8 @@ class DescriptiveAnalysis():
         return list(self.data.columns),self.drop_columns_chi_list
         
     def make_features_labels(self):
+        self.data.dropna(inplace=True)
 	
-	    self.data.dropna(inplace=True)
         
         self.features = self.data.drop(self.target,axis=1)
         self.labels = self.data[self.target]
