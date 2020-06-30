@@ -437,8 +437,7 @@ if __name__ == '__main__':
             try:
                 train = pd.read_csv(uploaded_file)
                 if len(train.columns) == 1:
-                    train = pd.read_csv(uploaded_file,sep=';')
-                    return train
+                    return(pd.read_csv(uploaded_file,sep=';'))
                 else:
                     return train
             except Exception as e:
