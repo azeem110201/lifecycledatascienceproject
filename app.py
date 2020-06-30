@@ -433,8 +433,18 @@ if __name__ == '__main__':
     def GetFile():
         uploaded_file = st.file_uploader("", type="csv")
         if uploaded_file is not None:
-            return(pd.read_csv(uploaded_file,sep=,))  
-
+            #return(pd.read_csv(uploaded_file,sep=','))
+            try:
+                train = pd.read_csv(uploaded_file)
+                if len(train.columns) == 1:
+                    train = pd.read_csv(uploaded_file,sep=';')
+                    return train
+                else:
+                    return train
+            except Exception as e:
+                print('The file is not read properly.')
+            
+            
     df = GetFile()
     
     if df is not None:
