@@ -350,7 +350,13 @@ def main(df):
          
         
         st.markdown(get_table_download_link(models), unsafe_allow_html=True)
-         
+        
+    st.sidebar.title('About Me')
+    if st.sidebar.checkbox('Click here to know about Me'):
+        st.sidebar.markdown("**Github Profile:**")
+        st.sidebar.markdown("[Mohd Abdul Azeem](https://github.com/azeem110201)")
+        st.sidebar.markdown('Student,from Hyderabad')
+        st.sidebar.markdown(" ` Version 0.0.1 ` ")
         
         
             
