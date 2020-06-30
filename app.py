@@ -190,7 +190,8 @@ def main(df):
             st.write(DA.apply_smote())
             ##changes were made from here
             some_list = st.write(DA.check_imbalance_after_smote())
-            fig = EA.countplot(some_list)
+            df = df.dropna(inplace=True)
+            fig = EA.countplot(df,some_list)
             st.pyplot()
             
             
